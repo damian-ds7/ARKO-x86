@@ -17,8 +17,8 @@ f:
 
 loop:
 	mov dl, [eax]
-	cmp dl, 0
-	je end
+	test dl, dl
+	jz end
 
 	cmp dl, bl
 	jl next

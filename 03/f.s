@@ -14,14 +14,14 @@ f:
 	mov eax, [ebp + 8]
 	mov ebx, [ebp + 12]
 	mov ecx, eax
-	mov edi, 0
+	xor edi, edi
 
 	dec eax
 
 count_digits:
 	inc eax
 	mov dl, [eax]
-	cmp dl, 0
+	test dl, dl
 	jz count_removed_digits
 
 	cmp dl, '0'
@@ -38,7 +38,7 @@ count_removed_digits:
 
 begin:
     mov dl, [eax]
-	cmp dl, 0
+	test dl, dl
 	jz end
 
 	cmp dl, '0'
@@ -47,7 +47,7 @@ begin:
 	ja next
 
 	dec edi
-	cmp edi, 0
+	test edi, edi
 	jge next
 
 save:

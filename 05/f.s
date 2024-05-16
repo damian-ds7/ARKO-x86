@@ -12,8 +12,8 @@ f:
 
 	mov eax, [ebp + 8]
 
-	mov ebx, 0
-	mov ecx, 0
+	xor ebx, ebx
+	xor ecx, ecx
 
 get_num_seq:
 	mov dl, [eax + ecx]
@@ -36,9 +36,9 @@ reset_counter:
 	mov ebx, ecx
 
 reset_counter_end:
-	mov ecx, 0
-	cmp dl, 0
-	je string_end
+	xor ecx, ecx
+	test dl, dl
+	jz string_end
 	jmp get_num_seq
 
 string_end:
@@ -50,8 +50,8 @@ save_seq:
 	mov [eax], cl
 	inc esi
 	inc eax
-	cmp ebx, 0
-	jne save_seq
+	test ebx, ebx
+	jnz save_seq
 
 end:
 	mov byte [eax], 0

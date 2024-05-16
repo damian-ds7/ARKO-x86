@@ -14,11 +14,11 @@ f:
 	mov eax, [ebp + 8]
 	mov ebx, [ebp + 12]
 	mov ecx, eax
-	mov edi, 0
+	xor edi, edi
 
 begin:
     mov dl, [eax]
-	cmp dl, 0
+	test dl, dl
 	jz end
 
 	inc edi
@@ -26,7 +26,7 @@ begin:
 	jne save
 
 reset_counter:
-	mov edi, 0
+	xor edi, edi
 	jmp next
 
 save:

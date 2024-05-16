@@ -18,7 +18,7 @@ f:
 
 begin:
     mov cl, [edx]
-	cmp cl, 0
+	test cl, cl
 	jz end
 
 	cmp cl, al
